@@ -1,0 +1,17 @@
+.zaglush {
+  width: 10px;
+  height: 10px;
+  background: black;
+  color: black;
+  border: black solid;
+}
+
+.link-primary {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+header .container .row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}/*# sourceMappingURL=style.css.map */
