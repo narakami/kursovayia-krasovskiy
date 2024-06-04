@@ -96,7 +96,7 @@ header .container .row {
 
 .people {
   padding: 20px;
-  width: 370px;
+  width: 350px;
 }
 .people .follow {
   width: 100%;
@@ -111,34 +111,35 @@ header .container .row {
   color: #009EFD;
   font-size: 14px;
 }
-.people .people-n {
-  display: flex;
-  justify-content: space-between;
-  width: 170px;
-}
-.people .people-n .people-img {
-  width: 56px;
-  height: 56px;
-}
-.people .people-n .follow-people .people-id {
-  display: flex;
-  justify-content: space-between;
-  width: 100px;
-}
-.people .people-n .follow-people .people-id p {
-  font-size: 14px;
-}
-.people .people-n .follow-people .people-id .name {
-  font-weight: bold;
-}
-.people .people-n .follow-people .people-id .id-name {
-  color: #B0B0B0;
-}
 .people .people2 .btn-success {
   border: 0;
   border-radius: 20px;
   width: 104px;
   background-color: #1AE4A6;
+}
+
+.people-n {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+}
+.people-n .people-img {
+  width: 56px;
+  height: 56px;
+}
+.people-n .follow-people .people-id {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+.people-n .follow-people .people-id p {
+  font-size: 14px;
+}
+.people-n .follow-people .people-id .name {
+  font-weight: bold;
+}
+.people-n .follow-people .people-id .id-name {
+  color: #B0B0B0;
 }
 
 .events {
@@ -177,6 +178,82 @@ header .container .row {
 }
 .events .events-body .event-friend {
   margin-top: 30px;
+}
+
+.pod {
+  padding: 20px;
+  width: 520px;
+}
+.pod .card-head {
+  width: 300px;
+}
+.pod .card-nick-img {
+  width: 56px;
+  height: 56px;
+}
+.pod .card-nick-img img {
+  width: 100%;
+  max-height: 200px;
+}
+.pod .card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.pod .card-img {
+  margin-left: -20px;
+}
+.pod .card-img img {
+  width: 108.5%;
+}
+.pod .card-body a {
+  color: #45A1F4;
+}
+.pod .card-body .flex p {
+  margin: 0;
+}
+.pod .card-body .card-item {
+  margin-top: 15px;
+}
+.pod .card-body .card-item p {
+  margin-left: 50px;
+}
+.pod .card-body .card-item img {
+  position: absolute;
+}
+.pod .card-body .card-item2 {
+  margin-top: 25px;
+}
+.pod .card-body .card-item2 p {
+  color: #45A1F4;
+}
+.pod .card-body .card-item2 img {
+  width: 48px;
+  height: 48px;
+}
+.pod .card-body .card-item2 a {
+  position: absolute;
+  margin-left: 53px;
+  margin-top: 25px;
+}
+.pod .card-body .card-item2 .card-item3 {
+  margin-left: 20px;
+}
+.pod .card-body .card-item2 .card-item3 img {
+  margin-left: -10px;
+}
+.pod .card-footer {
+  padding: 20px;
+  margin: 0 -20px -20px -20px;
+  background-color: #1AE4A6;
+}
+.pod .card-footer .aa {
+  margin: 0;
+  text-decoration: none;
+  margin-left: 10px;
+  color: white;
+}
+.pod .card-footer .card-footer1 {
+  width: 240px;
 }
 
 /*# sourceMappingURL=style.css.map */
