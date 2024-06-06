@@ -1,0 +1,306 @@
+.flex {
+  display: flex;
+}
+
+body {
+  background-color: #F2F2F4 !important;
+}
+
+header {
+  background-color: #ffffff;
+  margin-bottom: 25px;
+}
+
+.link-primary {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+header .container .row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.card {
+  width: 350px;
+  border-radius: 11px !important;
+}
+
+.card .card-head img {
+  width: 100%;
+  max-height: 200px;
+}
+
+.profile-banner .profile-2 {
+  overflow: hidden;
+  margin-top: -72px;
+  position: absolute;
+}
+
+.profile-banner .profile-edit-panel {
+  text-align: right;
+}
+
+.profile-banner .profile-edit-panel .edit-btn {
+  color: #3A3A3A;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 11px 28px;
+  display: inline-block;
+  border-radius: 50px;
+  text-transform: capitalize;
+  background-color: #ffffff;
+  border: solid black 1px;
+}
+
+.profile-banner .profile-edit-panel .edit-btn img {
+  height: 18px;
+  width: 18px;
+}
+
+.profile-banner .card-name p {
+  margin: 0;
+}
+
+.profile-banner .card-name .name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.profile-banner .card-name .id-name {
+  font-size: 14px;
+  color: #B0B0B0;
+}
+
+.profile-banner .card-info p {
+  margin: 0;
+}
+
+.profile-banner .card-info .card-info2 {
+  color: #1AE4A6;
+  font-size: 24px;
+}
+
+.profile-banner .card-info .card-info3 {
+  font-size: 18px;
+  color: #B0B0B0;
+}
+
+.trending {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.trending .trending-top {
+  color: #009EFD;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.trending .trending-body .trending-flex {
+  display: flex;
+}
+
+.trending .trending-body .trending-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.people {
+  padding: 20px;
+  width: 350px;
+}
+
+.people .follow {
+  width: 100%;
+  display: flex;
+}
+
+.people .follow .follow1 {
+  color: #009EFD;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.people .follow .follow2 {
+  color: #009EFD;
+  font-size: 14px;
+}
+
+.people .people2 .btn-success {
+  border: 0;
+  border-radius: 20px;
+  width: 104px;
+  background-color: #1AE4A6;
+}
+
+.people-n {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+}
+
+.people-n .people-img {
+  width: 56px;
+  height: 56px;
+}
+
+.people-n .follow-people .people-id {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.people-n .follow-people .people-id p {
+  font-size: 14px;
+}
+
+.people-n .follow-people .people-id .name {
+  font-weight: bold;
+}
+
+.people-n .follow-people .people-id .id-name {
+  color: #B0B0B0;
+}
+
+.events {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.events .event-title {
+  color: #009EFD;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.events .events-body p {
+  margin: 0;
+}
+
+.events .events-body .event-location {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: -50px;
+  padding: 6px;
+  border-radius: 10px;
+  width: 80px;
+  font-size: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.295);
+}
+
+.events .events-body .event-name {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.events .events-body .event-data {
+  margin-top: 10px;
+  align-items: center;
+  height: 20px;
+  width: 200px;
+}
+
+.events .events-body .event-friend {
+  margin-top: 30px;
+}
+
+.pod {
+  padding: 20px;
+  width: 520px;
+}
+
+.pod .card-head {
+  width: 300px;
+}
+
+.pod .card-nick-img {
+  width: 56px;
+  height: 56px;
+}
+
+.pod .card-nick-img img {
+  width: 100%;
+  max-height: 200px;
+}
+
+.pod .card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pod .card-img {
+  margin-left: -20px;
+}
+
+.pod .card-img img {
+  width: 108.5%;
+}
+
+.pod .card-body a {
+  color: #45A1F4;
+}
+
+.pod .card-body .flex p {
+  margin: 0;
+}
+
+.pod .card-body .card-item {
+  margin-top: 15px;
+}
+
+.pod .card-body .card-item p {
+  margin-left: 50px;
+}
+
+.pod .card-body .card-item img {
+  position: absolute;
+}
+
+.pod .card-body .card-item2 {
+  margin-top: 25px;
+}
+
+.pod .card-body .card-item2 p {
+  color: #45A1F4;
+}
+
+.pod .card-body .card-item2 img {
+  width: 48px;
+  height: 48px;
+}
+
+.pod .card-body .card-item2 a {
+  position: absolute;
+  margin-left: 53px;
+  margin-top: 25px;
+}
+
+.pod .card-body .card-item2 .card-item3 {
+  margin-left: 20px;
+}
+
+.pod .card-body .card-item2 .card-item3 img {
+  margin-left: -10px;
+}
+
+.pod .card-footer {
+  padding: 20px;
+  margin: 0 -20px -20px -20px;
+  background-color: #1AE4A6;
+}
+
+.pod .card-footer .aa {
+  margin: 0;
+  text-decoration: none;
+  margin-left: 10px;
+  color: white;
+}
+
+.pod .card-footer .card-footer1 {
+  width: 240px;
+}
+
