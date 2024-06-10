@@ -311,9 +311,6 @@ header .container .row {
 .register .suba a {
   text-decoration: none;
 }
-.register a {
-  text-decoration: none;
-}
 .register .reg {
   margin-top: 10px;
   display: flex;

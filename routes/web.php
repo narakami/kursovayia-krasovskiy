@@ -1,23 +1,16 @@
 <?php
 
-use app\Http\Controllers\Auth\registercontroller;
+use App\Http\Controllers\rcontroller;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::view('/', 'welcome')->name('welcome');
+Route::get('register', [rcontroller::class,'create'])->name('register');
+Route::post('register', [rcontroller::class, 'authstore']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/', function () {
-    return ('registration');
-});
+Route::post('/welcome', [rcontroller::class, 'store'])->name('login');
+
+
+Route::get('/logout', [rcontroller::class, 'destroy'])->name('logout');
+
+Route::view('/osn', 'osn')->name('osn');
