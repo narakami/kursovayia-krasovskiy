@@ -332,4 +332,42 @@ header .container .row {
 .register .dropdown-menu .dropdown-item {
   width: 350px;
   background-color: rgba(128, 128, 128, 0.13);
-}/*# sourceMappingURL=app.css.map */
+}
+.profile1 {
+  justify-content: center;
+}
+.profile1 .card {
+  width: 750px;
+}
+.profile1 .profile3 {
+  position: absolute;
+  margin-top: -100px;
+}
+.profile1 .profile3 img {
+  border-radius: 60px;
+  border: #3A3A3A solid 1px;
+  width: 110px;
+}
+.marg{
+  margin-top: 15px;
+}
+.dimga{
+  border-radius: 60px;
+  width: 48px;
+}
+.plow .card-info {
+  margin-left: 90px !important;
+}
+.newClass .blockst1{
+  display: none;
+}
+.blockst2{
+  display: none;
+}
+.blockst2 .card{
+  width: 715px;
+}
+.newClass .blockst2{
+  display: block;
+}
+/*# sourceMappingURL=app.css.map */

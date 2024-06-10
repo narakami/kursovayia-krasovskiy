@@ -7,65 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-        @isset($users)
-        @foreach($users as $user)
-            <p>{{ $user->name }}</p>
-        @endforeach
-    @endisset
-        <div class="container">
-          <div class="row">
-            <div class="col ">
-                <a href="#" class="link-primary text-center"><img src="img/home-icon-silhouette.svg" alt="">   Home</a>
-            </div>
-            <div class="col ">
-                <a href="#" class="link-primary"><img src="img/Vector.svg" alt=""> Discover</a>
-            </div>
-            <div class="col ">
-                <a href="#" class="link-primary"><img src="img/Group.svg" alt="">Notifications</a>
-            </div>
-            <div class="col ">
-                <a href="#" class="link-primary"><img src="img/Group (1).svg" alt="">Messages</a>
-            </div>
-            <div class="col-3 text-center">
-              <img src="img/logo.png" alt="">
-            </div>
-            <div class="col-2">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-            </div>
-            <div class="col">
-              Create Event
-            </div>
-            <div class="col">
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Profile</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
-                    </ul>
-                  </div>
-            </div>
-          </div>
-      </div>
-    </header>
+    <?$user = Auth::user();?>
+@include('nav.navbar')
     
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="card profile-banner">
                     <div class="card-head">
-                        <a href="profile.html"><img src="img/Rectangle.png"></a>
+                        <a href="{{ url('profile') }}"><img src="img/Rectangle.png"></a>
                     </div>
                     <div class="card-body">
                         <div class="profile-2">
-                            <a href="profile.html">
+                            <a href="{{ url('profile') }}">
                                 <img src="img/Ellipse.png" alt=""></a>
                         </div>
                         <div class="profile-edit-panel">
@@ -73,8 +27,8 @@
                             <img src="img/more.svg" alt="">
                         </div>
                         <div class="card-name">
-                            <p class="name">Назар</p>
-                            <p class="id-name">nazar</p>
+                            <p class="name"><?echo  $user->name;?></p>
+                            <p class="id-name"><?echo  $user->name;?></p>
                         </div>
                         <div class="row row-cols-3 card-info">
                             <div class="col card-info1"><p class="card-info2">цифра</p><p class="card-info3">обозначение</p></div>

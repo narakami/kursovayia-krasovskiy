@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 class rcontroller extends Controller
 {
     public function store(Request $request)
@@ -40,7 +41,6 @@ class rcontroller extends Controller
             "password"=> hash::make($request->password)
 
         ]);
-        dd($request->all());
         auth::login($user);
 
         return redirect('osn');
@@ -50,10 +50,50 @@ class rcontroller extends Controller
         
         return redirect()->route('welcome');
     }
-    public function getUsers()
+    public function index(){
+        $users = DB::table('users')->get();
+  
+        foreach($users as $key => $user){
+           if($user['id'] == 1){
+              $user[$key]['group'] = 'admin';
+           }
+        }
+  
+        return view('user.index', ['users' => $users]);
+     }
+     public function profileindex()
     {
-    $users = User::all(); // Получаем всех пользователей из базы данных
+        return view('profile');
+    }
+    public function profilestore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'confirm_password' => 'required_with:password|same:password',
+            'avatar' => 'image',
+        ]);
+  
+        $input = $request->all();
+          
+        if ($request->hasFile('avatar')) {
+            $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+  
+            $input['avatar'] = $avatarName;
+        
+        } else {
+            unset($input['avatar']);
+        }
+  
+        if ($request->filled('password')) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            unset($input['password']);
+        }
+  
+        auth()->user()->update($input);
     
-    return view('osn', ['name' => $users]); // Передаем данные в представление
+        return back()->with('success', 'Profile updated successfully.');
     }
 }
