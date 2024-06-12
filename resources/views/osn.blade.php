@@ -9,7 +9,6 @@
 <body>
     <?$user = Auth::user();?>
 @include('nav.navbar')
-    
     <div class="container">
         <div class="row">
             <div class="col">
@@ -64,15 +63,27 @@
                             <p class="follow1">People to follow</p>
                             <p class="follow2">See All</p>
                         </div>
+                        <?
+                        $i = 0;
+                        ?>
+                        @foreach($users as $user)
+                        <?
+                        $i++;
+                        if($i > 3) {
+		                break; // При достижении i > 3 останавливаем выборку
+	                    }
+                        ?>
+                        
                         <div class="people-n align-items-center">
-                            <div class="people-img"><img src="img/Group 6.6.png" alt=""></div>
+                            <div class="people-img"><img class="dimga" src="/avatars/{{ $user->avatar }}"></div>
                         <div class="people2">
                             <div class="follow-people">
-                                <div class="people-id"><p class="name">Назар</p><p class="id-name">nazar</p></div>
+                                <div class="people-id"><p class="name">{{ $user->name }}</p><p class="id-name">{{ $user->name }}</p></div>
                             </div>
                             <button type="button" class="btn btn-success ">Follow</button>
                         </div>
                         </div>
+                        @endforeach
                 </div>
                 <div class="card events">
                     <p class="event-title">Recommended events</p>
@@ -97,7 +108,36 @@
             </div>
         </div>
     </div>
-    
+    <h1>All Users</h1>
+<ul>
+    <div>
+        @foreach($users as $user)
+        <li>{{ $user->name }}</li>
+    @endforeach
+    </div>
+    <div>
+        <div>
+            @if(Auth::user()->hasfriendrequestspending($user) )
+            <p>в ожидании {{$user->name}} подтверждения запроса в друзья</p>
+            @elseif(Auth::user()->hasfriendrequestrecived($user))
+            <a href="#" class="btn btn-primary">подтвердить дружбу</a>
+            @endif
+        </div>
+
+
+        <h4>
+            {{ auth()->user()->name }}
+            друзья:
+        </h4>
+        @if(!auth()->user()->friends()->count())
+            <p>нет друзей {{ auth()->user()->name }}</p>
+        @else
+            @foreach($user->friends() as $user)
+            <p>{{ $user->name }}</p>
+            @endforeach
+        @endif
+    </div>
+</ul>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

@@ -16,7 +16,7 @@ class rcontroller extends Controller
             'password' => ['required', 'string']
         ]);
         if (Auth::attempt($request->only('email','password'))) {
-            return redirect()->route('osn');
+            return redirect('osn');
         }
         
         else {
@@ -95,5 +95,88 @@ class rcontroller extends Controller
         auth()->user()->update($input);
     
         return back()->with('success', 'Profile updated successfully.');
+    }
+
+    public function showAllUsers()
+{
+    $users = User::all();
+    return view('osn', ['users' => $users]);
+}
+    public function friendindex(){
+        $friends = Auth::user()->friends();
+        $requests= Auth::user()->friendrequests();
+
+
+        return view ('friend',[
+            'friends'=>$friends,
+            'requests'=>$requests
+        ]);
+    }
+    public function getresults(Request $request){
+        $query = $request->input('query');
+        if (!$query){
+            redirect()->route('friends');
+        }
+        $users = User::where(DB::raw("CONCAT(name)"),
+                            'LIKE',"%{$query}%")->get();
+
+        return view('search.results')->with('users', $users);
+    }
+    public function getprofile($username){
+        $user = User::where('name', $username)->first();
+
+        if (!$user){
+            abort(404);
+        }
+
+        return view('profile.index',compact('user'));
+
+    }
+    public function getadd($username){
+        $user = User::where('name', $username)->first();
+
+        if (!$user){
+            return redirect()->route('osn')->with('info','пользователь не найден');
+        }
+        if (Auth::user()->hasfriendrequestspending($user) 
+            || $user->hasfriendrequestspending( Auth::user() ) ){
+        return redirect()
+            ->route('profile.index',['username'=>$user->name])
+            ->with('info','пользователю отправлен запрос в друзья');
+            
+        }
+        if (Auth::user()->isfriendwith($user)){
+            return redirect()
+            ->route('profile.index',['username'=>$user->name])
+            ->with('info','пользователь уже в друзьях');
+        }
+        Auth::user()->addfriend($user);
+        return redirect()
+            ->route('profile.index',['username'=>$user->name])
+            ->with('info','пользователю отправлен запрос в друзья');
+
+    }
+    public function getaccept($username){
+        $user = User::where('name', $username)->first();
+
+        if (!$user){
+            return redirect()->route('osn')->with('info','пользователь не найден');
+        }
+        if (! Auth::user()->hasfriendrequestrecived($user)){
+            return redirect()->route('osn');
+        }
+        Auth::user()->acceptfriendrequest($user);
+        return redirect()
+            ->route('search.results',['username'=>$user->name])
+            ->with('info','запрос в друзья принят');
+    }
+    public function postdelete($username){
+        $user = User::where('name', $username)->first();
+        if (!Auth::user()->isfriendwith($user)){
+            return redirect()->back();
+        }
+        Auth::user()->deletefriend($user);
+        return redirect()->back();
+
     }
 }
