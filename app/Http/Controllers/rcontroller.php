@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\Message;
 class rcontroller extends Controller
 {
     public function store(Request $request)
@@ -179,4 +180,21 @@ class rcontroller extends Controller
         return redirect()->back();
 
     }
+    public function chatindex()
+{
+    $messages = Message::with('user')->orderBy('created_at')->get();
+
+    return view('chat', compact('messages'));
+}
+
+public function sendMessage(Request $request)
+{
+    $message = new Message();
+    $message->user_id = auth()->id();
+    $message->content = $request->content;
+    $message->save();
+
+    return redirect()->back();
+}
+    
 }

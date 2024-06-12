@@ -37,5 +37,5 @@ Route::get('/search', [rcontroller::class,'getresults'])->name('search.results')
 
 
 
-
-Route::view('/pusher', 'pusher')->name('pusher')->middleware('auth');
+Route::get('/chat', [rcontroller::class,'chatindex'])->name('chat');
+Route::post('/send-message', [rcontroller::class,'sendMessage'])->name('send-message');
