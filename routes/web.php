@@ -35,6 +35,14 @@ Route::get('/user/{username}',[rcontroller::class,'getprofile'])->name('profile.
 Route::view('/friends', 'friends')->name('friends')->middleware('auth');
 Route::get('/search', [rcontroller::class,'getresults'])->name('search.results');
 
+Route::view('/admin', 'admin')->name('admin')->middleware('auth');
+Route::get('/admin', [rcontroller::class,'showAllUsersadmin']);
+Route::post('/admin', [rcontroller::class, 'profilestoreadmin'])->name('admin.profile.store');
+Route::post('/admin/update/{userId}', [rcontroller::class, 'profilestoreadmin'])->name('admin.profile.update');
+Route::post('/admin/banned/{userId})', [rcontroller::class,'banned'])->name('admin.profile.banned');
+Route::post('/admin/unbanned/{userId})', [rcontroller::class,'unbanned'])->name('admin.profile.unbanned');
+
+Route::view('/banned', 'banned')->name('banned');
 
 
 Route::get('/chat', [rcontroller::class,'chatindex'])->name('chat');

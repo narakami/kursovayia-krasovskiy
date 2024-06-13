@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class="profile-2">
                             <a href="{{ url('profile') }}">
-                                <img src="img/Ellipse.png" alt=""></a>
+                                <img src="../avatars/{{ auth()->user()->avatar }}" alt=""></a>
                         </div>
                         <div class="profile-edit-panel">
                             <button class="edit-btn "><img src="img/Vector (1).svg" alt=""> Settings</button>
@@ -80,7 +80,20 @@
                             <div class="follow-people">
                                 <div class="people-id"><p class="name">{{ $user->name }}</p><p class="id-name">{{ $user->name }}</p></div>
                             </div>
-                            <button type="button" class="btn btn-success ">Follow</button>
+                            @if(Auth::user()->hasfriendrequestspending($user) )
+                            <p class="btn btn-success mb-0">ожидание</p>
+                            @elseif(Auth::user()->hasfriendrequestrecived($user))
+                            <a href="{{ route('friend.accept',['username'=>$user->name]) }}"><button class="btn btn-primary mt-2">подтвердить дружбу</button></a>
+                            @elseif(Auth::user()->isfriendwith($user))
+                                у вас в друзьях
+                            <form action="{{ route('friend.delete',['username'=>$user->name]) }}" method="POST">
+                                @csrf
+                                    <input type="submit" value="удалить из друзей" class="btn btn-primary my-2">
+                            </form>
+                            @elseif(Auth::user()->id !== $user->id )
+                            <a href="{{ route('friend.add',['username'=>$user->name]) }}">
+                                <button class="btn btn-primary mt-2">добавить в друзья</button></a>
+                            @endif
                         </div>
                         </div>
                         @endforeach
@@ -109,37 +122,6 @@
         </div>
     </div>
 
-
-    <h1>All Users</h1>
-<ul>
-    <div>
-        @foreach($users as $user)
-        <li>{{ $user->name }}</li>
-    @endforeach
-    </div>
-    <div>
-        <div>
-            @if(Auth::user()->hasfriendrequestspending($user) )
-            <p>в ожидании {{$user->name}} подтверждения запроса в друзья</p>
-            @elseif(Auth::user()->hasfriendrequestrecived($user))
-            <a href="#" class="btn btn-primary">подтвердить дружбу</a>
-            @endif
-        </div>
-
-
-        <h4>
-            {{ auth()->user()->name }}
-            друзья:
-        </h4>
-        @if(!auth()->user()->friends()->count())
-            <p>нет друзей {{ auth()->user()->name }}</p>
-        @else
-            @foreach($user->friends() as $user)
-            <p>{{ $user->name }}</p>
-            @endforeach
-        @endif
-    </div>
-</ul>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

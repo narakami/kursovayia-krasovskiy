@@ -9,16 +9,27 @@
 </head>
 <body>
     @include('nav.navbar')
-    @foreach($messages as $message)
-    <p><strong>{{ $message->user->name }}:</strong> {{ $message->content }}</p>
-    <small>{{ $message->created_at }}</small>
-@endforeach
+<div class="d-flex justify-content-center  ">
+    <div class="card py-2 px-2">
+        <p class="text-primary">Общий чат всех пользователей</p>
+        @foreach($messages as $message)
+        <div class="">
+            <p><small>{{ $message->created_at }}</small>
+                
+                <strong>{{ $message->user->name }}:</strong>
+                 {{ $message->content }}
+            </p>
+            <hr>
+        </div>
+    @endforeach
+    <form method="post" action="{{ route('send-message') }}">
+        @csrf
+        <input type="text" name="content">
+        <button type="submit">Отправить</button>
+    </form>
+    </div>
+</div>
 
-<form method="post" action="{{ route('send-message') }}">
-    @csrf
-    <input type="text" name="content">
-    <button type="submit">Отправить</button>
-</form>
 
 </body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">

@@ -35,6 +35,11 @@ header .container .row {
   margin-top: -72px;
   position: absolute;
 }
+.profile-banner .profile-2 img{
+  width: 99px;
+  border: #3A3A3A solid 1px;
+  border-radius: 60px;
+}
 .profile-banner .profile-edit-panel {
   text-align: right;
 }
@@ -320,7 +325,7 @@ header .container .row {
   justify-content: center;
 }
 .register .dropdowna {
-  margin-top: 20px;
+  margin-top: 10px;
   justify-content: center;
 }
 .register .dropdown-menu li {
@@ -369,5 +374,8 @@ header .container .row {
 }
 .newClass .blockst2{
   display: block;
+}
+.btn-center{
+  margin-left: 6.5rem;
 }
 /*# sourceMappingURL=app.css.map */

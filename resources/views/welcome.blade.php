@@ -22,7 +22,7 @@
                         @csrf
                             <input class="forma" type="email" name="email" id="email" placeholder="email">
                             <input class="forma" type="password" name="password" id="password" placeholder="password">
-                            <button type="submit">sign up</button>
+                            <button class="btn btn-primary btn-center mt-2"  type="submit">sign up</button>
                         </form>
                     </div>
                     <div class="dropdowna flex">
@@ -37,7 +37,7 @@
                               <li><input class="dropdown-item" type="email" name="email" id="email" placeholder="email"></li>
                               <li><input class="dropdown-item" type="password" name="password" id="password" placeholder="password"></li>
                               <li><input class="dropdown-item" type="password" name="password_confirmation" id="password_confirmation" placeholder="password_confirmation"></li>
-                              <li><button type="submit">sign up</button></li>
+                              <li><button class="btn btn-primary btn-center " type="submit">sign up</button></li>
                               </form>
                             </ul>
                           </div>

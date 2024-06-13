@@ -17,7 +17,14 @@ class rcontroller extends Controller
             'password' => ['required', 'string']
         ]);
         if (Auth::attempt($request->only('email','password'))) {
-            return redirect('osn');
+            $user = User::find(auth()->id());
+            if($user->banned == 1){
+                Auth::logout();
+                return redirect('banned');
+            }
+            else {
+                return redirect('osn');
+            }
         }
         
         else {
@@ -92,17 +99,69 @@ class rcontroller extends Controller
         } else {
             unset($input['password']);
         }
+        
   
         auth()->user()->update($input);
     
         return back()->with('success', 'Profile updated successfully.');
     }
+    public function profilestoreadmin(Request $request,$userId)
+    {
+        $user = User::find($userId);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'confirm_password' => 'required_with:password|same:password',
+            'avatar' => 'image',
+        ]);
+  
+        $input = $request->all();
+          
+        if ($request->hasFile('avatar')) {
+            $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+  
+            $input['avatar'] = $avatarName;
+        
+        } else {
+            unset($input['avatar']);
+        }
+  
+        if ($request->filled('password')) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            unset($input['password']);
+        }
+  
+        $user->update($input);
+    
+        return back()->with('success', 'Profile updated successfully.');
+    }
+    public function banned(Request $request, $userId){
+        $user = User::find($userId);
+        $user->banned = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'Пользователь успешно забанен.');
+  
+    }
+    public function unbanned(Request $request, $userId){
+        $user = User::find($userId);
+        $user->banned = 0;
+        $user->save();
+        return redirect()->back()->with('success', 'Пользователь успешно разбанен.');
+  
+    }
 
     public function showAllUsers()
-{
+    {
     $users = User::all();
     return view('osn', ['users' => $users]);
-}
+    }
+    public function showAllUsersadmin()
+    {
+    $users = User::all();
+    return view('admin', ['users' => $users]);
+    }
     public function friendindex(){
         $friends = Auth::user()->friends();
         $requests= Auth::user()->friendrequests();
@@ -181,20 +240,21 @@ class rcontroller extends Controller
 
     }
     public function chatindex()
-{
+    {
     $messages = Message::with('user')->orderBy('created_at')->get();
 
     return view('chat', compact('messages'));
-}
+    }
 
-public function sendMessage(Request $request)
-{
+    public function sendMessage(Request $request)
+    {
     $message = new Message();
     $message->user_id = auth()->id();
     $message->content = $request->content;
     $message->save();
 
     return redirect()->back();
-}
+    }
+
     
 }

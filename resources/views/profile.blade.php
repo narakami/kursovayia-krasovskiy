@@ -36,15 +36,15 @@
                                 <p class="id-name "><span>@</span>{{ auth()->user()->name }}</p>
                             </div>
                             <div class="card-bio">
-                                <p><b class="text-primary">Bio</b>:Lorem ipsum dolor sit amet.</p>
+                                <p><b class="text-primary">Bio</b>:{{ auth()->user()->bio }}</p>
                                 <p><b text-primary>Phone</b>:{{ auth()->user()->phone }}</p>
                                 <p><b text-primary>Mail</b>:{{ auth()->user()->email }}</p>
                                 <p><img src="img/Group (4).svg" alt="">{{ auth()->user()->city }}</p>
                             </div>
                             <div class="card-abaou">
                                 <p><b>About</b></p>
-                                <p><b class="text-primary">Age</b>: 24</p>
-                                <p><b class="text-primary">Gender</b>: Male</p>
+                                <p><b class="text-primary">Age</b>: {{ auth()->user()->age }}</p>
+                                <p><b class="text-primary">Gender</b>: {{ auth()->user()->gender }}</p>
                             </div>
                         </div>
                         <div class="blockst2">
@@ -127,6 +127,36 @@
                            
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label for="bio" class="form-label">Bio: </label>
+                                                        <input class="form-control" type="text" id="bio" name="bio" value="{{ auth()->user()->bio }}" autofocus="" >
+                                                        @error('bio')
+                                                            <span role="alert" class="text-danger">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                           
+                                                    <div class="mb-3 col-md-6">
+                                                        <label for="age" class="form-label">Age: </label>
+                                                        <input class="form-control" type="text" id="age" name="age" value="{{ auth()->user()->age }}" autofocus="" >
+                                                        @error('age')
+                                                            <span role="alert" class="text-danger">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label for="gender" class="form-label">Gender: </label>
+                                                        <input class="form-control" type="text" id="gender" name="gender" value="{{ auth()->user()->gender }}" autofocus="" >
+                                                        @error('gender')
+                                                            <span role="alert" class="text-danger">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label for="phone" class="form-label">Phone: </label>
                                                         <input class="form-control" type="text" id="phone" name="phone" value="{{ auth()->user()->phone }}" autofocus="" >
                                                         @error('phone')
@@ -136,6 +166,8 @@
                                                         @enderror
                                                     </div>
                            
+                                                </div>
+                                                <div class="row">
                                                     <div class="mb-3 col-md-6">
                                                         <label for="city" class="form-label">City: </label>
                                                         <input class="form-control" type="text" id="city" name="city" value="{{ auth()->user()->city }}" autofocus="" >
