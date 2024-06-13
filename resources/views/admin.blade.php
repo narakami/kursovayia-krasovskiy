@@ -13,11 +13,11 @@
     <div class="row ms-5">
         <h1>All Users</h1>
         <ul>
-            <div class="flex">
+            <div class="flex flex-wrap">
                 @foreach($users as $user)
-                <div class="blockst1 ms-3">
+                <div class="blockst1 ms-3 ">
                     <div class="row justify-content-center">
-                        <div class="col-md-12">
+                        <div class="col-md-12 ">
                             <div class="card">
                                 <div class="card-header">{{ __('Profile') }} : {{ $user->name }}</div>
                     

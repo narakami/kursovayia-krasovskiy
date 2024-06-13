@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('message', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // идентификатор пользователя
             $table->text('content');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messeges');
+        Schema::dropIfExists('messege');
     }
 };
