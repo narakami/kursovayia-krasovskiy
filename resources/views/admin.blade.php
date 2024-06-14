@@ -22,7 +22,7 @@
                                 <div class="card-header">{{ __('Profile') }} : {{ $user->name }}</div>
                     
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('user.profile.store') }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('admin.profile.update',['userId' =>$user->id]) }}" enctype="multipart/form-data">
                                         @csrf
                     
                                         @if (session('success'))
@@ -44,7 +44,7 @@
                                             </div>
                   
                                             <div class="mb-3 col-md-6">
-                                                <img src="/avatars/{{ auth()->user()->avatar }}" style="width:80px;margin-top: 10px;">
+                                                <img src="/avatars/{{ $user->avatar }}" style="width:80px;margin-top: 10px;">
                                             </div>
                   
                                         </div>
@@ -52,7 +52,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="name" class="form-label">Name: </label>
-                                                <input class="form-control" type="text" id="name" name="name" value="{{ auth()->user()->name }}" autofocus="" >
+                                                <input class="form-control" type="text" id="name" name="name" value="{{ $user->name }}" autofocus="" >
                                                 @error('name')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                    
                                             <div class="mb-3 col-md-6">
                                                 <label for="email" class="form-label">Email: </label>
-                                                <input class="form-control" type="text" id="email" name="email" value="{{ auth()->user()->email }}" autofocus="" >
+                                                <input class="form-control" type="text" id="email" name="email" value="{{ $user->email }}" autofocus="" >
                                                 @error('email')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>
@@ -96,7 +96,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="bio" class="form-label">Bio: </label>
-                                                <input class="form-control" type="text" id="bio" name="bio" value="{{ auth()->user()->bio }}" autofocus="" >
+                                                <input class="form-control" type="text" id="bio" name="bio" value="{{ $user->bio }}" autofocus="" >
                                                 @error('bio')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>
@@ -106,7 +106,7 @@
                    
                                             <div class="mb-3 col-md-6">
                                                 <label for="age" class="form-label">Age: </label>
-                                                <input class="form-control" type="text" id="age" name="age" value="{{ auth()->user()->age }}" autofocus="" >
+                                                <input class="form-control" type="text" id="age" name="age" value="{{ $user->age }}" autofocus="" >
                                                 @error('age')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="gender" class="form-label">Gender: </label>
-                                                <input class="form-control" type="text" id="gender" name="gender" value="{{ auth()->user()->gender }}" autofocus="" >
+                                                <input class="form-control" type="text" id="gender" name="gender" value="{{ $user->gender }}" autofocus="" >
                                                 @error('gender')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="phone" class="form-label">Phone: </label>
-                                                <input class="form-control" type="text" id="phone" name="phone" value="{{ auth()->user()->phone }}" autofocus="" >
+                                                <input class="form-control" type="text" id="phone" name="phone" value="{{ $user->phone }}" autofocus="" >
                                                 @error('phone')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>
@@ -138,7 +138,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="city" class="form-label">City: </label>
-                                                <input class="form-control" type="text" id="city" name="city" value="{{ auth()->user()->city }}" autofocus="" >
+                                                <input class="form-control" type="text" id="city" name="city" value="{{ $user->city }}" autofocus="" >
                                                 @error('city')
                                                     <span role="alert" class="text-danger">
                                                         <strong>{{ $message }}</strong>

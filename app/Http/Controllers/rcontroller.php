@@ -137,6 +137,9 @@ class rcontroller extends Controller
     
         return back()->with('success', 'Profile updated successfully.');
     }
+    public function profileupdateadmin(Request $request,$userId){
+        
+    }
     public function banned(Request $request, $userId){
         $user = User::find($userId);
         $user->banned = 1;
@@ -212,7 +215,7 @@ class rcontroller extends Controller
         }
         Auth::user()->addfriend($user);
         return redirect()
-            ->route('profile.index',['username'=>$user->name])
+            ->back()
             ->with('info','пользователю отправлен запрос в друзья');
 
     }

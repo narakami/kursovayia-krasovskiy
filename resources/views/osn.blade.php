@@ -61,7 +61,7 @@
                 <div class="card people">
                         <div class="follow justify-content-between align-items-center">
                             <p class="follow1">People to follow</p>
-                            <p class="follow2">See All</p>
+                            <a class="text-decoration-none" href="{{route('search.results')}}">see all</a>
                         </div>
                         <?
                         $i = 0;

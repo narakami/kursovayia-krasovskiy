@@ -16,7 +16,7 @@
         <div class="">
             <p><small>{{ $message->created_at }}</small>
                 
-                <strong>{{ $message->user->name }}:</strong>
+                <strong><a class="text-decoration-none" href="{{ route('profile.index',['username' =>$message->user->name])}}">{{ $message->user->name }}</a>:</strong>
                  {{ $message->content }}
             </p>
             <hr>
