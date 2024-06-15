@@ -47,3 +47,7 @@ Route::view('/banned', 'banned')->name('banned');
 
 Route::get('/chat', [rcontroller::class,'chatindex'])->name('chat');
 Route::post('/send-message', [rcontroller::class,'sendMessage'])->name('send-message');
+
+Route::get('/privatechat/{chatroom}', [rcontroller::class,'privatechatindex'])->name('privatechat');
+Route::post('/send-message/{chatroom}', [rcontroller::class,'privatesendMessage'])->name('privatesend-message');
+

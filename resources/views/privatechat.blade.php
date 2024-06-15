@@ -12,7 +12,6 @@
 <div class="d-flex justify-content-center  ">
     <div class="card py-2 px-2">
         <p class="text-primary">Общий чат всех пользователей</p>
-        
         @foreach($messages as $message)
         <div class="">
             <p><small>{{ $message->created_at }}</small>
@@ -23,7 +22,7 @@
             <hr>
         </div>
     @endforeach
-    <form method="post" action="{{ route('send-message') }}">
+    <form method="post" action="{{ route('privatesend-message',['chatroom' =>$chatroom]) }}">
         @csrf
         <input type="text" name="content">
         <button type="submit">Отправить</button>

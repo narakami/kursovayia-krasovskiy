@@ -16,7 +16,13 @@
             <p>У вас нет друзей</p>
         @else
             @foreach($user->friends() as $userr)
+                <? $a = auth()->user()->name;
+                    $b = $userr->name;
+                    $s = $a.$b
+                ?>
+
                 <p>{{ $userr->name }}</p>
+                <a href="{{route ('privatechat',['chatroom'=>$s])}}">приватный чат</a>
             @endforeach
         @endif
 

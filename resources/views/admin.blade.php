@@ -24,7 +24,7 @@
                                 <div class="card-body">
                                     <form method="POST" action="{{ route('admin.profile.update',['userId' =>$user->id]) }}" enctype="multipart/form-data">
                                         @csrf
-                    
+                    ф
                                         @if (session('success'))
                                             <div class="alert alert-success" role="alert" class="text-danger">
                                                 {{ session('success') }}

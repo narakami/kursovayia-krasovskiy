@@ -244,9 +244,10 @@ class rcontroller extends Controller
     }
     public function chatindex()
     {
-    $messages = Message::with('user')->orderBy('created_at')->get();
-
+    $messages = Message::with('user')->orderBy('created_at')->get()->whereNull('chatroom');
     return view('chat', compact('messages'));
+        
+        
     }
 
     public function sendMessage(Request $request)
@@ -254,6 +255,26 @@ class rcontroller extends Controller
     $message = new Message();
     $message->user_id = auth()->id();
     $message->content = $request->content;
+    $message->save();
+
+    return redirect()->back();
+    }
+    public function privatechatindex($chatroom)
+    {
+    $messages = Message::with('user')->orderBy('created_at')->get()
+    ->whereNotNull('chatroom')
+    ->where('chatroom', '=', $chatroom)
+    ;
+
+    return view('privatechat',['chatroom'=>$chatroom], compact('messages'));
+    }
+
+    public function privatesendMessage(Request $request,$chatroom)
+    {
+    $message = new Message();
+    $message->user_id = auth()->id();
+    $message->content = $request->content;
+    $message->chatroom = $chatroom;
     $message->save();
 
     return redirect()->back();
