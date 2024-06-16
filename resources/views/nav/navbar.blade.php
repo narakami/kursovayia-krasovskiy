@@ -15,7 +15,13 @@
             <a href="{{ url('chat') }}" class="link-primary"><img src="../img/Group (1).svg" alt="">Messages</a>
         </div>
         <div class="col-3 text-center">
-          <a href="{{ url('admin') }}"><img src="../img/logo.png" alt=""></a>
+          @if(auth()->user()->admin == 1)
+            <a href="{{ url('admin') }}"><img src="../img/logo.png" alt=""></a>
+          @elseif(auth()->user()->admin == null)
+            <img src="../img/logo.png" alt="">
+          
+          @endif
+          
         </div>
         <div class="col-2">
             <form class="d-flex" role="search" method="Get" action="{{route('search.results')}}">

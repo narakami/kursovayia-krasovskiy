@@ -103,7 +103,7 @@
                     <div class="events-body">
                         <img src="img/Rectangle 3.4.png" alt="">
                         <div class="event-location flex justify-content-between align-items-center">
-                            <div class=""><img src="img/Group 2.4.svg" alt=""></div>
+                            <a href="{{route ('adminx',['userId'=>auth()->user()->id])}}"><div class=""><img src="img/Group 2.4.svg" alt=""></div></a>
                             <div class=""><p>4.6 miles</p></div>
                         </div>
                         <p class="event-name">Carnival Night Festival</p>

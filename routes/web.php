@@ -51,3 +51,4 @@ Route::post('/send-message', [rcontroller::class,'sendMessage'])->name('send-mes
 Route::get('/privatechat/{chatroom}', [rcontroller::class,'privatechatindex'])->name('privatechat');
 Route::post('/send-message/{chatroom}', [rcontroller::class,'privatesendMessage'])->name('privatesend-message');
 
+Route::get('/admix/{userId}', [rcontroller::class,'admin'])->name('adminx');

@@ -163,7 +163,7 @@ class rcontroller extends Controller
     public function showAllUsersadmin()
     {
     $users = User::all();
-    return view('admin', ['users' => $users]);
+     return view('admin', ['users' => $users]);
     }
     public function friendindex(){
         $friends = Auth::user()->friends();
@@ -278,6 +278,13 @@ class rcontroller extends Controller
     $message->save();
 
     return redirect()->back();
+    }
+    public function admin(Request $request,$userId){
+        $user = User::find($userId);
+        $user->admin = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'Пользователь успешно забанен.');
+  
     }
 
     
